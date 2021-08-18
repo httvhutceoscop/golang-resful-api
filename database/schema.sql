@@ -16,12 +16,17 @@ CREATE TABLE transaction_type (
     code VARCHAR(10) UNIQUE NOT NULL,
     description VARCHAR(255)
 );
+INSERT INTO currency (code, description) VALUES('W', 'Withdrawals');
+INSERT INTO currency (code, description) VALUES('D', 'Deposits');
 
 CREATE TABLE currency (
     id uuid PRIMARY KEY DEFAULT uuid_generate_v1(),
     code VARCHAR(10) UNIQUE NOT NULL,
     description VARCHAR(255)
 );
+INSERT INTO currency (code, description) VALUES('VND', 'Vietnamese Dong');
+INSERT INTO currency (code, description) VALUES('JPY', 'Japanese Yen');
+INSERT INTO currency (code, description) VALUES('THB', 'Thai Baht');
 
 CREATE TABLE account (
     id uuid PRIMARY KEY DEFAULT uuid_generate_v1(),

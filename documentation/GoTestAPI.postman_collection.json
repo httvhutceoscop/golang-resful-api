@@ -1,0 +1,408 @@
+{
+	"info": {
+		"_postman_id": "69b91a12-c01d-4800-886a-4ab1407df497",
+		"name": "GoTestAPI",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "Account",
+			"item": [
+				{
+					"name": "Create Account",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"name\": \"bank-arg\",\n    \"initial_balance\": 30000,\n    \"description\": \"Agribank\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{localBaseUrl}}/api/v1/account",
+							"host": [
+								"{{localBaseUrl}}"
+							],
+							"path": [
+								"api",
+								"v1",
+								"account"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Update Account",
+					"request": {
+						"method": "PUT",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"id\": \"69568198-ff93-11eb-8180-acbc32c013df\",\n    \"name\": \"bank-arg-update\",\n    \"initial_balance\": 31230,\n    \"description\": \"Agribank\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{localBaseUrl}}/api/v1/account",
+							"host": [
+								"{{localBaseUrl}}"
+							],
+							"path": [
+								"api",
+								"v1",
+								"account"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Get All Accounts",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{localBaseUrl}}/api/v1/account",
+							"host": [
+								"{{localBaseUrl}}"
+							],
+							"path": [
+								"api",
+								"v1",
+								"account"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Get Accounts By Current User",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{localBaseUrl}}/api/v1/account/by_current_user",
+							"host": [
+								"{{localBaseUrl}}"
+							],
+							"path": [
+								"api",
+								"v1",
+								"account",
+								"by_current_user"
+							]
+						}
+					},
+					"response": []
+				}
+			],
+			"auth": {
+				"type": "bearer",
+				"bearer": [
+					{
+						"key": "token",
+						"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJhdXRob3JpemVkIjp0cnVlLCJleHAiOjE2MjkzMTQ5MTMsInVzZXJfaWQiOiJmMjFiNTg4Yy1mZjg0LTExZWItOTY1Mi1hY2JjMzJjMDEzZGYifQ.uiPJYkLoEsOY9qzxm5YtggTvBsEnlUiSBhNKGj_Zevc",
+						"type": "string"
+					}
+				]
+			},
+			"event": [
+				{
+					"listen": "prerequest",
+					"script": {
+						"type": "text/javascript",
+						"exec": [
+							""
+						]
+					}
+				},
+				{
+					"listen": "test",
+					"script": {
+						"type": "text/javascript",
+						"exec": [
+							""
+						]
+					}
+				}
+			]
+		},
+		{
+			"name": "Transaction",
+			"item": [
+				{
+					"name": "Create Transaction",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"amount\": 334555,\n    \"description\": \"That su khong biet nua\",\n    \"account_id\": \"e98b7374-ff92-11eb-84fe-acbc32c013df\",\n    \"transaction_type_id\": \"0a0a3a20-0012-11ec-b1dc-acbc32c013df\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{localBaseUrl}}/api/v1/transaction",
+							"host": [
+								"{{localBaseUrl}}"
+							],
+							"path": [
+								"api",
+								"v1",
+								"transaction"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Update Transaction",
+					"request": {
+						"method": "PUT",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"id\": \"64e1b6f0-0015-11ec-b067-acbc32c013df\",\n    \"amount\": 55000,\n    \"description\": \"DI choi voi ban gai 2222\",\n    \"account_id\": \"e98b7374-ff92-11eb-84fe-acbc32c013df\",\n    \"transaction_type_id\": \"0a0a3a20-0012-11ec-b1dc-acbc32c013df\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{localBaseUrl}}/api/v1/transaction",
+							"host": [
+								"{{localBaseUrl}}"
+							],
+							"path": [
+								"api",
+								"v1",
+								"transaction"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Get All Transaction",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{localBaseUrl}}/api/v1/transaction",
+							"host": [
+								"{{localBaseUrl}}"
+							],
+							"path": [
+								"api",
+								"v1",
+								"transaction"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Get Transaction",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{localBaseUrl}}/api/v1/transaction/64e1b6f0-0015-11ec-b067-acbc32c013df",
+							"host": [
+								"{{localBaseUrl}}"
+							],
+							"path": [
+								"api",
+								"v1",
+								"transaction",
+								"64e1b6f0-0015-11ec-b067-acbc32c013df"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Search Transaction",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{localBaseUrl}}/api/v1/transaction/search?from=2021-08-15&to=2021-08-18&searchType=W",
+							"host": [
+								"{{localBaseUrl}}"
+							],
+							"path": [
+								"api",
+								"v1",
+								"transaction",
+								"search"
+							],
+							"query": [
+								{
+									"key": "from",
+									"value": "2021-08-15"
+								},
+								{
+									"key": "to",
+									"value": "2021-08-18"
+								},
+								{
+									"key": "searchType",
+									"value": "W"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Delete Transaction",
+					"request": {
+						"method": "DELETE",
+						"header": [],
+						"url": {
+							"raw": "{{localBaseUrl}}/api/v1/transaction/64e1b6f0-0015-11ec-b067-acbc32c013df",
+							"host": [
+								"{{localBaseUrl}}"
+							],
+							"path": [
+								"api",
+								"v1",
+								"transaction",
+								"64e1b6f0-0015-11ec-b067-acbc32c013df"
+							]
+						}
+					},
+					"response": []
+				}
+			],
+			"auth": {
+				"type": "bearer",
+				"bearer": [
+					{
+						"key": "token",
+						"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJhdXRob3JpemVkIjp0cnVlLCJleHAiOjE2MjkzMTQ5MTMsInVzZXJfaWQiOiJmMjFiNTg4Yy1mZjg0LTExZWItOTY1Mi1hY2JjMzJjMDEzZGYifQ.uiPJYkLoEsOY9qzxm5YtggTvBsEnlUiSBhNKGj_Zevc",
+						"type": "string"
+					}
+				]
+			},
+			"event": [
+				{
+					"listen": "prerequest",
+					"script": {
+						"type": "text/javascript",
+						"exec": [
+							""
+						]
+					}
+				},
+				{
+					"listen": "test",
+					"script": {
+						"type": "text/javascript",
+						"exec": [
+							""
+						]
+					}
+				}
+			]
+		},
+		{
+			"name": "Auth",
+			"item": [
+				{
+					"name": "Auth Sign Up",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"password\": \"123456\",\n    \"password_confirm\": \"123456\",\n    \"email\": \"viet.nguyen3@fujitechjsc.com\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{localBaseUrl}}/api/v1/user/create",
+							"host": [
+								"{{localBaseUrl}}"
+							],
+							"path": [
+								"api",
+								"v1",
+								"user",
+								"create"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Auth Sign In",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"password\": \"123456\",\n    \"email\": \"viet.nguyen@fujitechjsc.com\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{localBaseUrl}}/api/v1/user/login",
+							"host": [
+								"{{localBaseUrl}}"
+							],
+							"path": [
+								"api",
+								"v1",
+								"user",
+								"login"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		}
+	],
+	"auth": {
+		"type": "basic",
+		"basic": [
+			{
+				"key": "username",
+				"value": "<Basic Auth Username>",
+				"type": "string"
+			},
+			{
+				"key": "password",
+				"value": "<Basic Auth Password>",
+				"type": "string"
+			}
+		]
+	},
+	"variable": [
+		{
+			"key": "baseUrl",
+			"value": "https://petstore.swagger.io/v1",
+			"type": "string"
+		}
+	]
+}
