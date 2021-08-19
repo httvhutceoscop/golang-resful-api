@@ -41,7 +41,7 @@ func (u *User) Register(conn *pgx.Conn) error {
 	}
 
 	u.Email = strings.ToLower(u.Email)
-	row := conn.QueryRow(context.Background(), "SELECT id FROM user_account WHERE email = $1", u.Email)
+	row := conn.QueryRow(context.Background(), "SELECT id FROM auth_user WHERE email = $1", u.Email)
 	userLookup := User{}
 	err := row.Scan(&userLookup)
 	if err != pgx.ErrNoRows {
@@ -57,7 +57,7 @@ func (u *User) Register(conn *pgx.Conn) error {
 	u.PasswordHash = string(pwdHash)
 
 	now := time.Now()
-	_, err = conn.Exec(context.Background(), "INSERT INTO user_account (created_at, updated_at, email, password_hash) VALUES($1, $2, $3, $4)", now, now, u.Email, u.PasswordHash)
+	_, err = conn.Exec(context.Background(), "INSERT INTO auth_user (created_at, updated_at, email, password_hash) VALUES($1, $2, $3, $4)", now, now, u.Email, u.PasswordHash)
 
 	return err
 }
@@ -74,7 +74,7 @@ func (u *User) GetAuthToken() (string, error) {
 
 // IsAuthenticated checks to make sure password is correct and user is active
 func (u *User) IsAuthenticated(conn *pgx.Conn) error {
-	row := conn.QueryRow(context.Background(), "SELECT id, password_hash FROM user_account WHERE email = $1", u.Email)
+	row := conn.QueryRow(context.Background(), "SELECT id, password_hash FROM auth_user WHERE email = $1", u.Email)
 	err := row.Scan(&u.ID, &u.PasswordHash)
 	if err == pgx.ErrNoRows {
 		fmt.Println("user with email not found")

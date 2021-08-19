@@ -47,8 +47,8 @@ CREATE TABLE transaction (
 ) INHERITS (base_table);
 CREATE INDEX index_created_at ON transaction(created_at DESC);
 
-INSERT INTO currency (code, description) VALUES('W', 'Withdrawals');
-INSERT INTO currency (code, description) VALUES('D', 'Deposits');
+INSERT INTO transaction_type (code, description) VALUES('W', 'Withdrawals');
+INSERT INTO transaction_type (code, description) VALUES('D', 'Deposits');
 
 INSERT INTO currency (code, description) VALUES('VND', 'Vietnamese Dong');
 INSERT INTO currency (code, description) VALUES('JPY', 'Japanese Yen');

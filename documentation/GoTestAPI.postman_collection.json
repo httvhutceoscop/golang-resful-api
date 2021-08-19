@@ -15,7 +15,7 @@
 						"header": [],
 						"body": {
 							"mode": "raw",
-							"raw": "{\n    \"name\": \"bank-arg\",\n    \"initial_balance\": 30000,\n    \"description\": \"Agribank\"\n}",
+							"raw": "{\n    \"name\": \"cash\",\n    \"initial_balance\": 1000000000,\n    \"description\": \"My Wallet\",\n    \"currency_id\": \"66a49d76-00a7-11ec-aeb4-acbc32c013df\"\n}",
 							"options": {
 								"raw": {
 									"language": "json"
@@ -43,7 +43,7 @@
 						"header": [],
 						"body": {
 							"mode": "raw",
-							"raw": "{\n    \"id\": \"69568198-ff93-11eb-8180-acbc32c013df\",\n    \"name\": \"bank-arg-update\",\n    \"initial_balance\": 31230,\n    \"description\": \"Agribank\"\n}",
+							"raw": "{\n    \"id\": \"30f6da8e-00a9-11ec-9f68-acbc32c013df\",\n    \"name\": \"bank-arg-update\",\n    \"initial_balance\": 20000000,\n    \"description\": \"Agribank\"\n}",
 							"options": {
 								"raw": {
 									"language": "json"
@@ -109,7 +109,7 @@
 				"bearer": [
 					{
 						"key": "token",
-						"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJhdXRob3JpemVkIjp0cnVlLCJleHAiOjE2MjkzMTQ5MTMsInVzZXJfaWQiOiJmMjFiNTg4Yy1mZjg0LTExZWItOTY1Mi1hY2JjMzJjMDEzZGYifQ.uiPJYkLoEsOY9qzxm5YtggTvBsEnlUiSBhNKGj_Zevc",
+						"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJhdXRob3JpemVkIjp0cnVlLCJleHAiOjE2Mjk0MzQ4MDQsInVzZXJfaWQiOiI2YzdhZmU1Ni0wMGE4LTExZWMtYTM3Ny1hY2JjMzJjMDEzZGYifQ.iHJPd0F_rpJGxeRm0T8olsBhqSHU5Te6Hn5XulttSyI",
 						"type": "string"
 					}
 				]
@@ -145,7 +145,7 @@
 						"header": [],
 						"body": {
 							"mode": "raw",
-							"raw": "{\n    \"amount\": 334555,\n    \"description\": \"That su khong biet nua\",\n    \"account_id\": \"e98b7374-ff92-11eb-84fe-acbc32c013df\",\n    \"transaction_type_id\": \"0a0a3a20-0012-11ec-b1dc-acbc32c013df\"\n}",
+							"raw": "{\n    \"amount\": 334555,\n    \"description\": \"That su khong biet nua\",\n    \"account_id\": \"30f6da8e-00a9-11ec-9f68-acbc32c013df\",\n    \"transaction_type_id\": \"f4d207ea-00a8-11ec-aeb4-acbc32c013df\"\n}",
 							"options": {
 								"raw": {
 									"language": "json"
@@ -239,7 +239,7 @@
 						"method": "GET",
 						"header": [],
 						"url": {
-							"raw": "{{localBaseUrl}}/api/v1/transaction/search?from=2021-08-15&to=2021-08-18&searchType=W",
+							"raw": "{{localBaseUrl}}/api/v1/transaction/search?from=2021-08-15&to=2021-08-19&searchType=W",
 							"host": [
 								"{{localBaseUrl}}"
 							],
@@ -256,7 +256,7 @@
 								},
 								{
 									"key": "to",
-									"value": "2021-08-18"
+									"value": "2021-08-19"
 								},
 								{
 									"key": "searchType",
@@ -293,7 +293,7 @@
 				"bearer": [
 					{
 						"key": "token",
-						"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJhdXRob3JpemVkIjp0cnVlLCJleHAiOjE2MjkzMTQ5MTMsInVzZXJfaWQiOiJmMjFiNTg4Yy1mZjg0LTExZWItOTY1Mi1hY2JjMzJjMDEzZGYifQ.uiPJYkLoEsOY9qzxm5YtggTvBsEnlUiSBhNKGj_Zevc",
+						"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJhdXRob3JpemVkIjp0cnVlLCJleHAiOjE2Mjk0MzQ4MDQsInVzZXJfaWQiOiI2YzdhZmU1Ni0wMGE4LTExZWMtYTM3Ny1hY2JjMzJjMDEzZGYifQ.iHJPd0F_rpJGxeRm0T8olsBhqSHU5Te6Hn5XulttSyI",
 						"type": "string"
 					}
 				]
@@ -320,7 +320,7 @@
 			]
 		},
 		{
-			"name": "Auth",
+			"name": "Auth User",
 			"item": [
 				{
 					"name": "Auth Sign Up",
@@ -329,7 +329,7 @@
 						"header": [],
 						"body": {
 							"mode": "raw",
-							"raw": "{\n    \"password\": \"123456\",\n    \"password_confirm\": \"123456\",\n    \"email\": \"viet.nguyen3@fujitechjsc.com\"\n}",
+							"raw": "{\n    \"password\": \"123456\",\n    \"password_confirm\": \"123456\",\n    \"email\": \"viet.nguyen@fujitechjsc.com\"\n}",
 							"options": {
 								"raw": {
 									"language": "json"

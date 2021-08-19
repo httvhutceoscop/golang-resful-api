@@ -17,8 +17,8 @@ type Account struct {
 	Name           string    `json:"name"`
 	InitialBalance int64     `json:"initial_balance"`
 	Description    string    `json:"description"`
-	CurrencyId     uuid.UUID `json:"currency"`
-	UserAccountId  uuid.UUID `json:"user_account"`
+	CurrencyId     uuid.UUID `json:"currency_id"`
+	UserAccountId  uuid.UUID `json:"auth_user_id"`
 }
 
 func (a *Account) Create(conn *pgx.Conn, userId string) error {
@@ -31,12 +31,11 @@ func (a *Account) Create(conn *pgx.Conn, userId string) error {
 		a.InitialBalance = 0
 	}
 	now := time.Now()
-	currency_id := "163205a8-ff90-11eb-b1dc-acbc32c013df"
 
-	// row := conn.QueryRow(context.Background(), "INSERT INTO account (name, initial_balance, description, currency_id, user_account_id, created_at, updated_at) VALUES ($1, $2, $3, $4, $5, $6, $7)", a.Name, a.InitialBalance, a.Description, currency_id, userId, now, now)
+	// row := conn.QueryRow(context.Background(), "INSERT INTO account (name, initial_balance, description, currency_id, auth_user_id, created_at, updated_at) VALUES ($1, $2, $3, $4, $5, $6, $7)", a.Name, a.InitialBalance, a.Description, currency_id, userId, now, now)
 	// err := row.Scan(&a.ID)
 
-	_, err := conn.Exec(context.Background(), "INSERT INTO account (name, initial_balance, description, currency_id, user_account_id, created_at, updated_at) VALUES ($1, $2, $3, $4, $5, $6, $7)", a.Name, a.InitialBalance, a.Description, currency_id, userId, now, now)
+	_, err := conn.Exec(context.Background(), "INSERT INTO account (name, initial_balance, description, currency_id, auth_user_id, created_at, updated_at) VALUES ($1, $2, $3, $4, $5, $6, $7)", a.Name, a.InitialBalance, a.Description, a.CurrencyId, userId, now, now)
 
 	if err != nil {
 		// fmt.Println(err)
@@ -66,7 +65,7 @@ func (a *Account) Update(conn *pgx.Conn) error {
 }
 
 func FetchAllAccounts(conn *pgx.Conn) ([]Account, error) {
-	rows, err := conn.Query(context.Background(), "SELECT id, name, initial_balance, description, user_account_id, currency_id FROM account")
+	rows, err := conn.Query(context.Background(), "SELECT id, name, initial_balance, description, auth_user_id, currency_id FROM account")
 	if err != nil {
 		fmt.Println(err)
 		return nil, fmt.Errorf("error getting accounts")
@@ -87,7 +86,7 @@ func FetchAllAccounts(conn *pgx.Conn) ([]Account, error) {
 }
 
 func GetAccountsByUser(userId string, conn *pgx.Conn) ([]Account, error) {
-	rows, err := conn.Query(context.Background(), "SELECT id, name, initial_balance, description, user_account_id, currency_id FROM account WHERE user_account_id = $1", userId)
+	rows, err := conn.Query(context.Background(), "SELECT id, name, initial_balance, description, auth_user_id, currency_id FROM account WHERE auth_user_id = $1", userId)
 	if err != nil {
 		fmt.Printf("error getting accounts %v", err)
 		return nil, fmt.Errorf("there was an error getting the accounts")
@@ -107,7 +106,7 @@ func GetAccountsByUser(userId string, conn *pgx.Conn) ([]Account, error) {
 }
 
 func FindAccountById(id uuid.UUID, conn *pgx.Conn) (Account, error) {
-	row := conn.QueryRow(context.Background(), "SELECT id, name, initial_balance, description, user_account_id, currency_id FROM account WHERE id = $1", id)
+	row := conn.QueryRow(context.Background(), "SELECT id, name, initial_balance, description, auth_user_id, currency_id FROM account WHERE id = $1", id)
 	account := Account{
 		ID: id,
 	}
