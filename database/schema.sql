@@ -5,7 +5,7 @@ CREATE TABLE IF NOT EXISTS base_table (
     updated_at TIMESTAMP NOT NULL
 );
 
-CREATE TABLE user_account (
+CREATE TABLE auth_user (
     id uuid PRIMARY KEY DEFAULT uuid_generate_v1(),
     email VARCHAR(255) UNIQUE NOT NULL,
     password_hash VARCHAR(255) NOT NULL
@@ -30,13 +30,14 @@ INSERT INTO currency (code, description) VALUES('THB', 'Thai Baht');
 
 CREATE TABLE account (
     id uuid PRIMARY KEY DEFAULT uuid_generate_v1(),
-    name VARCHAR(50) UNIQUE NOT NULL,
+    name VARCHAR(50) NOT NULL,
     initial_balance INTEGER NOT NULL,
     description VARCHAR(255),
     currency_id uuid,
-    user_account_id uuid,
+    auth_user_id uuid,
     FOREIGN KEY (currency_id) REFERENCES currency (id) ON DELETE SET NULL,
-    FOREIGN KEY (user_account_id) REFERENCES user_account (id) ON DELETE CASCADE
+    FOREIGN KEY (auth_user_id) REFERENCES auth_user (id) ON DELETE CASCADE
+    UNIQUE (name, auth_user_id)
 ) INHERITS (base_table);
 
 CREATE TABLE transaction (

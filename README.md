@@ -8,6 +8,8 @@ Very simple RESTful API and JWT authentication with Golang
 - [Visual Studio Code](https://code.visualstudio.com/)
 
 ## Database
+### Database design
+- File: `documentation/DB-Design.xlsx`
 ### ERD
 ![Go API ERD](images/go-api-erd.png)
 
